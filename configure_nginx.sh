@@ -16,6 +16,9 @@ http {
             default upgrade;
             '' close;
           }
+    upstream uvicorn {
+        server unix:/tmp/uvicorn.sock;
+      }
 "
 
 # Split SERVER_NAME and PROXY_PASS into arrays
