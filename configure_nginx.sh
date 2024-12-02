@@ -49,7 +49,7 @@ for ((i = 0; i < ${#server_name_array[@]}; i++)); do
           proxy_set_header X-Forwarded-Proto \$scheme;
           proxy_set_header Upgrade \$http_upgrade;
           proxy_set_header Connection \$connection_upgrade;
-          proxy_set_header Host \$http_host;
+          # proxy_set_header Host \$http_host;
           proxy_set_header X-Nginx-Proxy true;
           proxy_redirect off;
           proxy_buffering off;
