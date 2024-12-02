@@ -7,14 +7,15 @@ events {
   worker_connections 1024;
 }
 
-map \$http_upgrade \$connection_upgrade {
-        default upgrade;
-        '' close;
-      }
 
 http {
     # Increase the bucket size for server names hash tables
     server_names_hash_bucket_size 128;
+
+    map \$http_upgrade \$connection_upgrade {
+            default upgrade;
+            '' close;
+          }
 "
 
 # Split SERVER_NAME and PROXY_PASS into arrays
