@@ -7,6 +7,11 @@ events {
   worker_connections 1024;
 }
 
+map \$http_upgrade \$connection_upgrade {
+        default upgrade;
+        '' close;
+      }
+
 http {
     # Increase the bucket size for server names hash tables
     server_names_hash_bucket_size 128;
@@ -46,11 +51,6 @@ for ((i = 0; i < ${#server_name_array[@]}; i++)); do
           proxy_buffering off;
           proxy_http_version 1.1;
           proxy_pass ${proxy_pass_array[$i]};
-      }
-
-      map \$http_upgrade \$connection_upgrade {
-        default upgrade;
-        '' close;
       }
   }"
 done
